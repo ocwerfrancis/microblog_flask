@@ -1,0 +1,11 @@
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 50%, #e0f2fe 100%);
+}
+
+.quote-card {
+  background: #f8fafc;
+}
