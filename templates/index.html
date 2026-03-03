@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}Grace Community Church | Welcome Home{% endblock %}
+
+{% block content %}
+<main id="home">
+  <section class="hero-section py-5">
+    <div class="container py-4">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <p class="text-primary fw-semibold text-uppercase small mb-2">A place to belong, believe, and become.</p>
+          <h1 class="display-5 fw-bold mb-3">Welcome to Grace Community Church</h1>
+          <p class="lead text-secondary mb-4">
+            Join us in prayer, worship, and community throughout the week.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <a class="btn btn-primary btn-lg" href="#visit">Plan Your Visit</a>
+            <a class="btn btn-outline-primary btn-lg" href="#mass-programs">Mass Programs</a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+              <h2 class="h4">Sunday Masses</h2>
+              <ul class="mb-0 ps-3">
+                <li>7:00 AM - English</li>
+                <li>8:30 AM - Luganda</li>
+                <li>10:00 AM - English</li>
+                <li>5:00 PM - English</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-5">
+    <div class="container">
+      <div class="row g-4 align-items-stretch">
+        <div class="col-md-7">
+          <h2 class="mb-3">Who We Are</h2>
+          <p class="text-secondary mb-0">
+            Grace Community Church is a diverse family passionate about worship, discipleship,
+            and meaningful relationships. Whether you are new to faith or have followed Jesus for years,
+            there is a place for you here.
+          </p>
+        </div>
+        <div class="col-md-5">
+          <div class="card h-100 border-0 shadow-sm quote-card">
+            <div class="card-body d-flex flex-column justify-content-center">
+              <p class="fs-5 mb-2">“Let us consider how we may spur one another on toward love and good deeds.”</p>
+              <span class="text-primary fw-semibold">Hebrews 10:24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mass-programs" class="py-5 bg-body-tertiary">
+    <div class="container">
+      <h2 class="mb-4">Mass Programs</h2>
+      <div class="row g-3">
+        {% for program in mass_programs %}
+          <div class="col-md-6">
+            <article class="card h-100 border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="h5">{{ program.title }}</h3>
+                <p class="text-primary fw-semibold mb-2">{{ program.time }}</p>
+                <p class="text-secondary mb-0">{{ program.description }}</p>
+              </div>
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="thursday-program" class="py-5">
+    <div class="container">
+      <h2 class="mb-4">Thursday Program</h2>
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <ul class="mb-0">
+            {% for item in thursday_program %}
+              <li class="mb-2">{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="py-5 bg-body-tertiary">
+    <div class="container">
+      <h2 class="mb-4">Church Projects</h2>
+      <div class="row g-3">
+        {% for project in church_projects %}
+          <div class="col-md-6 col-lg-4">
+            <article class="card h-100 border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="h5">{{ project.name }}</h3>
+                <p class="fw-semibold mb-2 text-success">{{ project.status }}</p>
+                <p class="text-secondary mb-0">{{ project.summary }}</p>
+              </div>
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="ministries" class="py-5">
+    <div class="container">
+      <h2 class="mb-4">Ministries for Every Generation</h2>
+      <div class="row g-3">
+        {% for ministry in ministries %}
+          <div class="col-md-6 col-lg-4">
+            <article class="card h-100 border-0 shadow-sm">
+              <div class="card-body">
+                <h3 class="h5">{{ ministry.name }}</h3>
+                <p class="text-secondary mb-0">{{ ministry.summary }}</p>
+              </div>
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <h2>Plan Your First Visit</h2>
+          <p class="text-secondary">
+            We'd love to welcome you this Sunday. Arrive 15 minutes early, and our team will
+            help you find parking, kids check-in, and seats.
+          </p>
+          <ul>
+            <li>Friendly greeters and coffee in the lobby.</li>
+            <li>Children's classes for ages 2–12.</li>
+            <li>Casual attire; come as you are.</li>
+          </ul>
+        </div>
+        <div class="col-lg-6">
+          <form class="card border-0 shadow-sm p-4" aria-label="Plan your visit form">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-control mb-3" id="name" type="text" placeholder="Your name" />
+
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control mb-3" id="email" type="email" placeholder="you@example.com" />
+
+            <label class="form-label" for="message">How can we help?</label>
+            <textarea class="form-control mb-3" id="message" rows="4" placeholder="Tell us a little about your visit."></textarea>
+
+            <button type="button" class="btn btn-primary">Send Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
